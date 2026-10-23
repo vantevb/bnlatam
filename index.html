@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BN LATAM</title>
+<meta name="description" content="Letters, drawings and videos from fans across Latin America to Boss and Noeul.">
+<meta property="og:title" content="BN LATAM">
+<meta property="og:description" content="Letters, drawings and videos from Latin America to Boss & Noeul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&family=Sarabun:wght@400;600&display=swap">
+<style>
+/* Mural de cartas: capa com o nome grande, seções por país, cartões como cartas soltas */
+:root{
+  --bg:#FBF5F9; --paper:#FFFFFF; --ink:#2A1A33; --muted:#6E5A75; --line:#E8D6E2;
+  --accent:#C2186F; --accent-soft:#FCE4F0; --night:#221529; --night-ink:#F8ECFA; --night-muted:#D9C6DE; --pink:#F08CC4;
+  --display:'Cormorant Garamond', Georgia, serif; --body:'Manrope', 'Segoe UI', Arial, sans-serif; --thai:'Sarabun', 'Manrope', sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--accent)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hero{background:var(--night);color:var(--night-ink);padding-block:64px 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(226,46,140,.35),rgba(226,46,140,0) 70%)}
+.langs{display:flex;gap:6px;justify-content:flex-end;margin-bottom:32px;position:relative;z-index:1}
+.langs button{font:700 13px var(--body);color:var(--night-muted);background:transparent;border:1px solid rgba(248,236,250,.25);border-radius:99px;padding:5px 12px;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--night-ink);color:var(--night)}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(64px,13vw,150px);line-height:.9;margin:12px 0 18px;letter-spacing:-.01em;position:relative;z-index:1}
+h1 i{color:var(--pink)}
+.thai{font-family:var(--thai);font-size:20px;color:var(--night-muted);margin:0 0 20px}
+.lead{font-size:20px;max-width:58ch;color:var(--night-ink);margin:0;position:relative;z-index:1}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:36px;position:relative;z-index:1}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--display);font-size:44px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--night-muted)}
+section{padding-block:56px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(34px,5vw,48px);line-height:1.05;margin:0 0 12px;text-wrap:balance}
+.send{background:var(--accent-soft);border-radius:20px;padding:32px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center}
+.send ol{margin:12px 0 0;padding-left:20px}
+.send li{margin-bottom:6px}
+.btn{display:inline-block;font:800 16px var(--body);background:var(--accent);color:#FFF6FB;text-decoration:none;border-radius:12px;padding:14px 22px}
+.tagline{font:800 28px var(--body);color:var(--accent);letter-spacing:.02em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+.chips button{font:600 14px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.country{margin-bottom:40px}
+.country h3{font-family:var(--display);font-size:32px;font-weight:600;margin:0 0 14px;display:flex;align-items:baseline;gap:12px}
+.country h3 small{font:600 13px var(--body);color:var(--muted)}
+.cards{columns:3 300px;column-gap:16px}
+.card{break-inside:avoid;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 16px;display:flex;flex-direction:column;gap:10px}
+.card .who{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.card .kind{font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+.card p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.card img{width:100%;border-radius:10px;display:block}
+.card .tr{font-family:var(--thai);font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.empty{border:1px dashed var(--line);border-radius:16px;padding:32px;text-align:center;color:var(--muted)}
+footer{background:var(--night);color:var(--night-muted);padding-block:32px;font-size:14px}
+footer a{color:var(--pink)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:760px){.send{grid-template-columns:minmax(0,1fr)}.lead{font-size:18px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="pt" aria-pressed="false">PT</button>
+      <button data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <div class="eyebrow" data-i18n="eyebrow">From Latin America, with love</div>
+    <h1>BN <i>LATAM</i></h1>
+    <p class="thai" lang="th">จากละตินอเมริกา ด้วยรัก · ถึงบอสและโนอึล</p>
+    <p class="lead" data-i18n="lead">Letters, drawings and videos from fans all over Latin America who could not be close to Boss and Noeul, but wanted them to know how much they mean to us.</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<main>
+  <section id="send" class="wrap" hidden>
+    <div class="send">
+      <div>
+        <h2 data-i18n="sendTitle">Send your message</h2>
+        <p data-i18n="sendLead">Before the Final Chapter, let’s tell Boss and Noeul what they mean to Latin America.</p>
+        <ol>
+          <li data-i18n="step1">Write a letter, make a drawing or record a short video.</li>
+          <li data-i18n="step2">Send it through the form, or post it with the tag below.</li>
+          <li data-i18n="step3">Your message appears here, under your country.</li>
+        </ol>
+      </div>
+      <div>
+        <p class="tagline">#BNLATAM</p>
+        <p><a class="btn" id="formlink" href="#" target="_blank" rel="noopener" data-i18n="sendBtn">Open the form</a></p>
+        <p style="font-size:14px;color:var(--muted)" id="deadline"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="wall">
+    <h2 data-i18n="wallTitle">Messages by country</h2>
+    <div class="chips" id="chips" role="group" aria-label="Country"></div>
+    <div id="countries"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n="footer">A fan project by Entre BLs &amp; Desejos. Independent and unofficial, made with love for Boss Chaikamon and Noeul Nuttarat.</p>
+    <p>Instagram · Threads · TikTok: @entreblsedesejos · X: @entreblsedesejo</p>
+  </div>
+</footer>
+
+<script>
+const I18N={
+ en:{eyebrow:'From Latin America, with love',lead:'Letters, drawings and videos from fans all over Latin America who could not be close to Boss and Noeul, but wanted them to know how much they mean to us.',sendTitle:'Send your message',sendLead:'Before the Final Chapter, let’s tell Boss and Noeul what they mean to Latin America.',step1:'Write a letter, make a drawing or record a short video.',step2:'Send it through the form, or post it with the tag below.',step3:'Your message appears here, under your country.',sendBtn:'Open the form',wallTitle:'Messages by country',footer:'A fan project by Entre BLs & Desejos. Independent and unofficial, made with love for Boss Chaikamon and Noeul Nuttarat.',all:'All',messages:'messages',message:'message',countries:'countries',fans:'letters, drawings and videos',empty:'The first messages arrive soon. Send yours!',letter:'Letter',drawing:'Drawing',video:'Video',watch:'Watch the video',until:'Messages open until'},
+ pt:{eyebrow:'Da América Latina, com amor',lead:'Cartas, desenhos e vídeos de fãs de toda a América Latina que não puderam estar perto de Boss e Noeul, mas queriam que eles soubessem o quanto significam pra gente.',sendTitle:'Mande sua mensagem',sendLead:'Antes do Final Chapter, vamos dizer a Boss e Noeul o quanto eles significam para a América Latina.',step1:'Escreva uma carta, faça um desenho ou grave um vídeo curto.',step2:'Envie pelo formulário ou poste com a tag abaixo.',step3:'Sua mensagem aparece aqui, no seu país.',sendBtn:'Abrir o formulário',wallTitle:'Mensagens por país',footer:'Um projeto de fãs do Entre BLs & Desejos. Independente e não oficial, feito com amor para Boss Chaikamon e Noeul Nuttarat.',all:'Todos',messages:'mensagens',message:'mensagem',countries:'países',fans:'cartas, desenhos e vídeos',empty:'As primeiras mensagens chegam em breve. Mande a sua!',letter:'Carta',drawing:'Desenho',video:'Vídeo',watch:'Ver o vídeo',until:'Envios abertos até'},
+ es:{eyebrow:'Desde Latinoamérica, con amor',lead:'Cartas, dibujos y videos de fans de toda Latinoamérica que no pudieron estar cerca de Boss y Noeul, pero querían que supieran cuánto significan para nosotras.',sendTitle:'Envía tu mensaje',sendLead:'Antes del Final Chapter, digámosles a Boss y Noeul cuánto significan para Latinoamérica.',step1:'Escribe una carta, haz un dibujo o graba un video corto.',step2:'Envíalo por el formulario o publícalo con la etiqueta de abajo.',step3:'Tu mensaje aparece aquí, en tu país.',sendBtn:'Abrir el formulario',wallTitle:'Mensajes por país',footer:'Un proyecto de fans de Entre BLs & Desejos. Independiente y no oficial, hecho con amor para Boss Chaikamon y Noeul Nuttarat.',all:'Todos',messages:'mensajes',message:'mensaje',countries:'países',fans:'cartas, dibujos y videos',empty:'Los primeros mensajes llegan pronto. ¡Envía el tuyo!',letter:'Carta',drawing:'Dibujo',video:'Video',watch:'Ver el video',until:'Envíos abiertos hasta'}
+};
+let lang='en', DATA={config:{},messages:[]}, filter='';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safe=u=>/^(https:\/\/|media\/)/.test(u||'')?u:'';
+const t=k=>I18N[lang][k]||I18N.en[k];
+function setLang(l){lang=l;document.documentElement.lang=l;document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));render()}
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+function render(){
+  const M=DATA.messages, C=DATA.config||{};
+  const byC={};M.forEach(m=>{(byC[m.country]=byC[m.country]||[]).push(m)});
+  const names=Object.keys(byC).sort((a,b)=>byC[b].length-byC[a].length);
+  document.getElementById('stats').innerHTML=M.length?`<div><b>${M.length}</b><span>${t('fans')}</span></div><div><b>${names.length}</b><span>${t('countries')}</span></div>`:'';
+  const send=document.getElementById('send');send.hidden=!C.collecting;
+  if(C.formUrl)document.getElementById('formlink').href=C.formUrl;
+  document.getElementById('deadline').textContent=C.deadline?`${t('until')} ${C.deadline}`:'';
+  document.getElementById('chips').innerHTML=names.length>1?[['',t('all')],...names.map(n=>[n,`${n} · ${byC[n].length}`])].map(([v,l])=>`<button data-c="${esc(v)}" aria-pressed="${v===filter}">${esc(l)}</button>`).join(''):'';
+  const shown=filter?[filter]:names;
+  document.getElementById('countries').innerHTML=M.length?shown.map(n=>`<div class="country"><h3>${esc(n)} <small>${byC[n].length} ${byC[n].length===1?t('message'):t('messages')}</small></h3><div class="cards">${byC[n].map(card).join('')}</div></div>`).join(''):`<div class="empty">${t('empty')}</div>`;
+}
+function card(m){
+  const kind=t(m.type)||m.type;
+  let body='';
+  if(m.text)body+=`<p>${esc(m.text)}</p>`;
+  if(m.image&&safe(m.image))body+=`<img src="${esc(m.image)}" alt="${esc((m.alt||kind)+' — '+(m.name||''))}" loading="lazy">`;
+  if(m.video&&safe(m.video))body+=`<p><a href="${esc(m.video)}" target="_blank" rel="noopener">▶ ${t('watch')}</a></p>`;
+  if(m.translation)body+=`<p class="tr" lang="th"><span class="kind">ภาษาไทย</span><br>${esc(m.translation)}</p>`;
+  return `<article class="card"><div class="who"><span class="kind">${esc(kind)}</span><span>${esc(m.name||'')}${m.city?' · '+esc(m.city):''}</span></div>${body}</article>`;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;filter=b.dataset.c;render()});
+fetch('data/messages.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(d)DATA=d;setLang(lang)}).catch(()=>setLang(lang));
+setLang('en');
+</script>
+</body>
+</html>
