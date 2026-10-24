@@ -2,7 +2,14 @@
   "config": {
     "collecting": true,
     "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeLsaY05Y6bys0PmKXrutkxtOvuhSe795L-smiF8p9iblqr0w/viewform",
-    "deadline": "13/12/2026"
+    "deadline": "13/12/2026",
+    "partners": [
+      {
+        "name": "BossNoeul Colombia",
+        "flag": "🇨🇴",
+        "url": "https://instagram.com/bossnoeulcol"
+      }
+    ]
   },
   "messages": []
 }
